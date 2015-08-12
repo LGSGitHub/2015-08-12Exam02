@@ -39,7 +39,7 @@ public class App
 		ResultSet film = null;
 		
 		String csql = "select first_name,last_name from customer where customer_id="+id;
-		String fsql = "select film_id,title,rental_duration from film where film_id=(select film_id from inventory where inventory_id =(select inventory_id from rental where rental_id=(select rental_id from customer where customer_id=)))"+id;
+		String fsql = "select film_id,title,rental_duration from film where film_id in(select film_id from inventory where inventory_id in(select inventory_id from rental where rental_id in(select rental_id from customer where customer_id=)))"+id;
 		
 		try {
 			
